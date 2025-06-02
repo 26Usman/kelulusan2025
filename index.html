@@ -1,1 +1,79 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pengumuman Kelulusan 2025</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        input {
+            width: 90%;
+            padding: 0.8em;
+            margin: 0.5em 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 0.8em 1.2em;
+            border: none;
+            background-color: #0077cc;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 1em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pengumuman Kelulusan<br>SMP Negeri 1 Suwawa Timur<br>Tahun Pelajaran 2024/2025</h2>
+        <input type="text" id="nisn" placeholder="Masukkan NISN">
+        <input type="text" id="dob" placeholder="Masukkan Tanggal Lahir (DD-MM-YYYY)">
+        <button onclick="checkGraduation()">Cek Kelulusan</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const students = {
+            "0084239181": "13-05-2008",
+            "0093530258": "09-02-2009"
+        };
+
+        function checkGraduation() {
+            const nisn = document.getElementById("nisn").value.trim();
+            const dob = document.getElementById("dob").value.trim();
+            const resultDiv = document.getElementById("result");
+
+            if (students[nisn] === dob) {
+                resultDiv.textContent = "SELAMAT! Anda dinyatakan LULUS.";
+                resultDiv.style.color = "green";
+            } else {
+                resultDiv.textContent = "Data tidak ditemukan. Silakan periksa kembali NISN dan Tanggal Lahir Anda.";
+                resultDiv.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
