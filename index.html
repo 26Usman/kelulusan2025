@@ -1,92 +1,70 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pengumuman Kelulusan 2025</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 40px;
-      background: #f0f4f8;
-    }
-    h1, h2 {
-      margin-bottom: 10px;
-    }
-    input, button {
-      padding: 10px;
-      margin: 8px;
-      width: 280px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    #result {
-      margin-top: 30px;
-      font-size: 1.2em;
-      font-weight: bold;
-    }
-    .success { color: green; }
-    .error { color: red; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan 2025 - SMPN 1 Suwawa Timur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h2>Pengumuman Kelulusan</h2>
+        <h3>SMP Negeri 1 Suwawa Timur</h3>
+        <p>Tahun Pelajaran 2024/2025</p>
+        <form id="loginForm">
+            <input type="text" id="nisn" placeholder="Masukkan NISN" required><br>
+            <input type="text" id="dob" placeholder="Masukkan Tanggal Lahir (dd-mm-yyyy)" required><br>
+            <button type="submit">Lihat Hasil</button>
+        </form>
+        <div id="result"></div>
+    </div>
 
-  <h1>Pengumuman Kelulusan</h1>
-  <h2>SMP Negeri 1 Suwawa Timur</h2>
-  <p>Tahun Pelajaran 2024/2025</p>
+    <script>
+        const students = {
+            "0084239181": { dob: "13-05-2008", name: "AL FAZAR PAPUTUNGAN" },
+            "0093530258": { dob: "09-02-2009", name: "MUHAMAD AFDAL GOLONGGOMO" },
+            // Tambahkan data lain sesuai kebutuhan...
+        };
 
-  <input type="text" id="nisn" placeholder="Masukkan NISN"><br>
-  <input type="text" id="ttl" placeholder="Tanggal Lahir (dd-mm-yyyy)"><br>
-  <button onclick="login()">Lihat Hasil</button>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const nisn = document.getElementById("nisn").value.trim();
+            const dob = document.getElementById("dob").value.trim();
+            const student = students[nisn];
+            const resultDiv = document.getElementById("result");
 
-  <div id="result"></div>
-
-  <script>
-    const students = [
-      { nisn: "0084239181", name: "AL FAZAR PAPUTUNGAN", birth: "13-05-2008" },
-      { nisn: "0093530258", name: "MUHAMAD AFDAL GOLONGGOMO", birth: "09-02-2009" },
-      { nisn: "0081827121", name: "TAUPIK PAKAYA", birth: "17-05-2008" },
-      { nisn: "0108162312", name: "SITI RAHMAH SA'DIYYAH TOLAGO", birth: "09-06-2010" },
-      { nisn: "0106894446", name: "MOH. YONIS MUKO", birth: "06-03-2010" },
-      { nisn: "0098816109", name: "MAULIA SILVANI SINGGILI", birth: "07-03-2009" },
-      { nisn: "0094752856", name: "SALZA SAPITRI N.TOMELO", birth: "23-09-2009" },
-      { nisn: "0092621906", name: "VANESYA A.R PANGEMANAN", birth: "03-08-2009" },
-      { nisn: "0106637702", name: "NATANAEL ALFAROH NAYOAN", birth: "01-01-2010" },
-      { nisn: "0093168251", name: "ANISA OKTAVIA DIULI", birth: "11-10-2009" },
-      { nisn: "0091515887", name: "TAUPIK KAMARU", birth: "10-03-2008" },
-      { nisn: "0085870190", name: "CINDY OKTAVIANI AKALABU", birth: "30-10-2008" },
-      { nisn: "0095732969", name: "MARVEL R. KATTANG", birth: "10-11-2009" },
-      { nisn: "0095976779", name: "SITI HAWA LIMBOTU", birth: "27-12-2009" },
-      { nisn: "0098985630", name: "KINSA NUSI", birth: "25-07-2009" },
-      { nisn: "0093088403", name: "ADRIYANSYAH MOKODOMPIT", birth: "24-01-2009" },
-      { nisn: "0109180491", name: "FEBRIYANTO TAMUU", birth: "05-02-2010" },
-      { nisn: "0097032999", name: "AL AZHAR RAMU", birth: "05-06-2009" },
-      { nisn: "0101168984", name: "SITI YOLAMITA GOLONGGOMO", birth: "10-10-2010" },
-      { nisn: "0084976543", name: "RELSI YASIN", birth: "15-08-2008" }
-    ];
-
-    function login() {
-      const nisn = document.getElementById('nisn').value.trim();
-      const ttl = document.getElementById('ttl').value.trim();
-      const resultDiv = document.getElementById('result');
-      const siswa = students.find(s => s.nisn === nisn && s.birth === ttl);
-
-      if (siswa) {
-        resultDiv.innerHTML = `Selamat, <strong>${siswa.name}</strong>!<br>Anda dinyatakan <span class=\"success\">LULUS</span> pada Tahun Pelajaran 2024/2025.<br><br>Kepala Sekolah,<br><strong>Dra. Adriani Z. Mokoagow</strong>`;
-        resultDiv.className = \"success\";
-      } else {
-        resultDiv.innerHTML = \"Data tidak ditemukan. Pastikan NISN dan Tanggal Lahir sesuai.\";
-        resultDiv.className = \"error\";
-      }
-    }
-  </script>
-
+            if (student && student.dob === dob) {
+                resultDiv.innerHTML = `<h3>Selamat ${student.name}!</h3><p>Anda dinyatakan <strong>LULUS</strong>.</p>`;
+            } else {
+                resultDiv.innerHTML = "<p style='color: red;'>Data tidak ditemukan atau salah.</p>";
+            }
+        });
+    </script>
 </body>
 </html>
