@@ -3,41 +3,40 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Pengumuman Kelulusan 2025</title>
+    <title>Pengumuman Kelulusan 2025 - SMPN 1 Suwawa Timur</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f0f4f7;
+            font-family: 'Segoe UI', sans-serif;
+            background: #eef2f7;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
         }
-        .container {
-            background: white;
+        .box {
+            background: #fff;
             padding: 2em;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: center;
-            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+            width: 90%;
             max-width: 400px;
+            text-align: center;
         }
         input {
             width: 90%;
-            padding: 0.8em;
+            padding: 0.7em;
             margin: 0.5em 0;
-            border-radius: 5px;
             border: 1px solid #ccc;
+            border-radius: 6px;
         }
         button {
-            padding: 0.8em 1.2em;
+            padding: 0.7em 1.5em;
             border: none;
-            background-color: #0077cc;
-            color: white;
-            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 6px;
             cursor: pointer;
         }
         .result {
@@ -47,31 +46,29 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Pengumuman Kelulusan<br>SMP Negeri 1 Suwawa Timur<br>Tahun Pelajaran 2024/2025</h2>
-        <input type="text" id="nisn" placeholder="Masukkan NISN">
-        <input type="text" id="dob" placeholder="Masukkan Tanggal Lahir (DD-MM-YYYY)">
-        <button onclick="checkGraduation()">Cek Kelulusan</button>
-        <div class="result" id="result"></div>
+    <div class="box">
+        <h2>Pengumuman Kelulusan<br>SMP Negeri 1 Suwawa Timur<br>TP 2024/2025</h2>
+        <input type="text" id="nisn" placeholder="NISN">
+        <input type="text" id="dob" placeholder="Tanggal Lahir (DD-MM-YYYY)">
+        <button onclick="cekKelulusan()">Cek Kelulusan</button>
+        <div class="result" id="hasil"></div>
     </div>
 
     <script>
-        const students = {
+        const siswa = {
             "0084239181": "13-05-2008",
             "0093530258": "09-02-2009"
         };
 
-        function checkGraduation() {
+        function cekKelulusan() {
             const nisn = document.getElementById("nisn").value.trim();
             const dob = document.getElementById("dob").value.trim();
-            const resultDiv = document.getElementById("result");
+            const hasil = document.getElementById("hasil");
 
-            if (students[nisn] === dob) {
-                resultDiv.textContent = "SELAMAT! Anda dinyatakan LULUS.";
-                resultDiv.style.color = "green";
+            if (siswa[nisn] === dob) {
+                hasil.innerHTML = "<span style='color:green'>SELAMAT! Anda LULUS.</span>";
             } else {
-                resultDiv.textContent = "Data tidak ditemukan. Silakan periksa kembali NISN dan Tanggal Lahir Anda.";
-                resultDiv.style.color = "red";
+                hasil.innerHTML = "<span style='color:red'>Data tidak ditemukan. Periksa kembali.</span>";
             }
         }
     </script>
