@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengumuman Kelulusan 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 50px;
+    }
+    .login-box {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Pengumuman Kelulusan</h2>
+    <p>SMP Negeri 1 Suwawa Timur<br>Tahun Pelajaran 2024/2025</p>
+    <form id="loginForm">
+      <input type="text" id="nisn" placeholder="Masukkan NISN" required><br>
+      <input type="password" id="dob" placeholder="Tanggal Lahir (ddmmyyyy)" required><br>
+      <button type="submit">Lihat Hasil</button>
+    </form>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    const dataSiswa = {
+      "0084239181": "13052008",
+      "0093530258": "09022009",
+      "0081827121": "17052008",
+      "0108162312": "09062010",
+      "0106894446": "06032010",
+      "0098816109": "07032009",
+      "0094752856": "23092009",
+      "0092621906": "03082009",
+      "0106637702": "01012010",
+      "0093168251": "11102009",
+      "0091515887": "10032008",
+      "0085870190": "30102008",
+      "0095732969": "10112009",
+      "0095976779": "27122009",
+      "0098985630": "25072009",
+      "0093088403": "24012009",
+      "0109180491": "05022010",
+      "0097032999": "05062009",
+      "0101168984": "10102010",
+      "0084976543": "15082008",
+      "0093311555": "10112009",
+      "0091451555": "23042009",
+      "0078465784": "11072007",
+      "0094424880": "13032009",
+      "0098657877": "26112009",
+      "0097785119": "17062009",
+      "0093781861": "15092009",
+      "0099693623": "25102009",
+      "0094557126": "17122009",
+      "0093928629": "25092009",
+      "0091041316": "18072009",
+      "0091399817": "04082009",
+      "0095503601": "24042009",
+      "0092278291": "28092009",
+      "0095120329": "07042009",
+      "0095165734": "06092009",
+      "0094325714": "10122009",
+      "0078747554": "23102007",
+      "0102022205": "12112010",
+      "0102796431": "21012010"
+    };
+
+    const loginForm = document.getElementById("loginForm");
+    const resultBox = document.getElementById("result");
+
+    loginForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nisn = document.getElementById("nisn").value;
+      const dob = document.getElementById("dob").value;
+      if (dataSiswa[nisn] && dataSiswa[nisn] === dob) {
+        resultBox.style.color = "green";
+        resultBox.textContent = "Selamat! Anda dinyatakan LULUS.";
+      } else {
+        resultBox.style.color = "red";
+        resultBox.textContent = "NISN atau Tanggal Lahir salah.";
+      }
+    });
+  </script>
+</body>
+</html>
